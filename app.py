@@ -2,6 +2,20 @@ import streamlit as st
 import pickle
 import pandas as pd
 import requests
+import os
+import gdown
+
+# URLs to your Google Drive files (must be set to 'Anyone with the link can view')
+SIMILARITY_URL = 'https://drive.google.com/uc?id=1bVy5FeHmf2WdzqXla6-J9GDoplCRN_nI'
+MOVIE_DICT_URL = 'https://drive.google.com/uc?id=1-L4yfLil56gXgVk2iCUQTln-lxrJvGjh'
+
+# Download files if not already present
+if not os.path.exists("similarity.pkl"):
+    gdown.download(SIMILARITY_URL, "similarity.pkl", quiet=False)
+
+if not os.path.exists("movie_dict.pk1"):
+    gdown.download(MOVIE_DICT_URL, "movie_dict.pk1", quiet=False)
+
 
 
 def fetch_poster(movie_id):
